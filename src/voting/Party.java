@@ -4,11 +4,16 @@ public class Party {
     private final String name;
     private int votes = 0;
     private final PoliticalSpectrum leaning;
+    private final boolean majorParty;
 
 
-    public Party(String name, PoliticalSpectrum leaning) {
+    public Party(String name, PoliticalSpectrum leaning, boolean majorParty) {
         this.name = name;
         this.leaning = leaning;
+        this.majorParty = majorParty;
+    }
+    public Party(String name, PoliticalSpectrum leaning) {
+        this(name, leaning, false); // calls the other constructor
     }
 
     public void addVote() {
@@ -22,4 +27,8 @@ public class Party {
     public String getName() {
         return name;
     }
+
+    public boolean getMajorPartyStatus() { return majorParty; }
+
+    public PoliticalSpectrum getLeaning() { return leaning; }
 }
