@@ -6,9 +6,12 @@ public class Main {
     public static void main(String[] args) {
 
         List<Party> parties = List.of(
-                new Party("Alpha Party"),
-                new Party("Beta Bloc"),
-                new Party("Gamma Group")
+                new Party("Conservative Party", PoliticalSpectrum.RIGHT),
+                new Party("Labour Party", PoliticalSpectrum.CENTRE_LEFT),
+                new Party("Green Party", PoliticalSpectrum.LEFT),
+                new Party("Reform Party", PoliticalSpectrum.FAR_RIGHT),
+                new Party("Liberal Democrats", PoliticalSpectrum.CENTRE_LEFT),
+                new Party("Communist Party", PoliticalSpectrum.FAR_LEFT)
         );
 
         List<Voter> voters = generateVoter(100, parties);
@@ -28,7 +31,6 @@ public class Main {
         List<Voter> voters = new ArrayList<>();
         for (int i = 0; i< count; i++) {
             voters.add(new Voter(parties));
-            // comment
         }
         return voters;
     }
