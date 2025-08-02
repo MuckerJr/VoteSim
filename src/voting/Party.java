@@ -13,7 +13,7 @@ public class Party {
         this.majorParty = majorParty;
     }
     public Party(String name, PoliticalSpectrum leaning) {
-        this(name, leaning, false); // calls the other constructor
+        this(name, leaning, false);
     }
 
     public void addVote() {

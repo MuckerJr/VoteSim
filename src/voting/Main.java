@@ -5,6 +5,17 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
+        Map<PoliticalSpectrum, Integer> spectrumDistribution = Map.of(
+                PoliticalSpectrum.FAR_LEFT, 4,
+                PoliticalSpectrum.LEFT, 11,
+                PoliticalSpectrum.CENTRE_LEFT, 14,
+                PoliticalSpectrum.CENTRE, 22,
+                PoliticalSpectrum.CENTRE_RIGHT, 13,
+                PoliticalSpectrum.RIGHT, 10,
+                PoliticalSpectrum.FAR_RIGHT, 3,
+                PoliticalSpectrum.UNKNOWN, 22
+        );
+
         List<Party> parties = List.of(
                 new Party("Conservative Party", PoliticalSpectrum.RIGHT),
                 new Party("Labour Party", PoliticalSpectrum.CENTRE_LEFT),

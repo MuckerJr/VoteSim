@@ -7,5 +7,6 @@ public enum PoliticalSpectrum {
     CENTRE,
     CENTRE_RIGHT,
     RIGHT,
-    FAR_RIGHT
+    FAR_RIGHT,
+    UNKNOWN,
 }
