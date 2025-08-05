@@ -26,12 +26,13 @@ public class Voter {
 //     to each voter. Then it can be called from within
 //     the election engin logic
     public double calculateTacticalVoteChance(double baseTacticalChance) {
+        //TODO
         // Assumption is that base tactical is 25%
-        //
         return baseTacticalChance;
     }
 
     public void castVote() {
+        //TODO
         // The voter needs to assess the odds of their top candidate winning
         // - is my candidate a major party (for now)?
         // The voter must decide if this will make them vote tactically for the closest major party
