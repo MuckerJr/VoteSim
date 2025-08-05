@@ -26,7 +26,7 @@ public class Main {
                 new Party("Communist Party", PoliticalSpectrum.FAR_LEFT)
         );
 
-        List<Voter> voters = generateVoter(100, parties);
+        List<Voter> voters = VoterGenerator.generateVoters(1000, parties, spectrumDistribution);
 
         for (Voter voter : voters) {
             Party choice = voter.getTopChoice();
@@ -39,11 +39,11 @@ public class Main {
         }
     }
 
-    private static List<Voter> generateVoter(int count, List<Party> parties) {
-        List<Voter> voters = new ArrayList<>();
-        for (int i = 0; i< count; i++) {
-            voters.add(new Voter(parties));
-        }
-        return voters;
-    }
+//    private static List<Voter> generateVoter(int count, List<Party> parties) {
+//        List<Voter> voters = new ArrayList<>();
+//        for (int i = 0; i< count; i++) {
+//            voters.add(new Voter(parties));
+//        }
+//        return voters;
+//    }
 }

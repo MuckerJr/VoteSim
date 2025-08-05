@@ -9,9 +9,9 @@ public class Voter {
     private Party tacticalVote;
     private PoliticalSpectrum voterLeaning;
 
-    public Voter(List<Party> preferences) {
-        this.preferences = new ArrayList<>(preferences);
-        Collections.shuffle(this.preferences);
+    public Voter(PoliticalSpectrum voterLeaning, List<Party> preferences) {
+        this.voterLeaning = voterLeaning;
+        this.preferences = SpectrumUtil.rankPartiesByDistance(voterLeaning, preferences);
     }
 
     public Party getTopChoice() {
