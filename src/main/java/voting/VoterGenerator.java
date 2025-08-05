@@ -12,15 +12,15 @@ public class VoterGenerator {
         for (Map.Entry<PoliticalSpectrum, Integer> entry : spectrumDistribution.entrySet()) {
             PoliticalSpectrum spectrum = entry.getKey();
             int percentage = entry.getValue();
-            int numberOfVoters = (int) Math.round((percentage /100.0) * populationSize);
+            int numberOfVoters = (int) Math.round((percentage /100.0d) * populationSize);
 
             for (int i = 0; i < numberOfVoters; i++) {
-                voters.add(new Voter(spectrum, parties));
+                voters.add(new Voter(spectrum, parties, 25.0d));
             }
         }
 
         while (voters.size() > populationSize) {
-            voters.add(new Voter(PoliticalSpectrum.UNKNOWN, parties));
+            voters.add(new Voter(PoliticalSpectrum.UNKNOWN, parties, 40.0d));
         }
 
         Collections.shuffle(voters);

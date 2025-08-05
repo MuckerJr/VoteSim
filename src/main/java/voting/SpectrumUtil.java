@@ -1,6 +1,6 @@
 package main.java.voting;
 
-import java.util.List;
+import java.util.*;
 
 public class SpectrumUtil {
     public static int getScore(PoliticalSpectrum spectrum) {
@@ -22,25 +22,20 @@ public class SpectrumUtil {
     }
 
     public static List<Party> rankPartiesByDistance(PoliticalSpectrum voterPreference, List<Party> parties) {
-        return parties.stream()
-                .sorted((p1, p2) -> {
-                    int dist1 = calculateDistance(voterPreference, p1.getLeaning());
-                    int dist2 = calculateDistance(voterPreference, p2.getLeaning());
+        Map<Integer, List<Party>> distanceMap = new TreeMap<>();
 
-                    if(dist1 != dist2) {
-                        return Integer.compare(dist1, dist2);
-                    }
+        for (Party party : parties) {
+            int distance = calculateDistance(voterPreference, party.getLeaning());
+            distanceMap.computeIfAbsent(distance, k -> new ArrayList<>()).add(party);
+        }
 
-                    boolean p1Major = p1.getMajorPartyStatus();
-                    boolean p2Major = p2.getMajorPartyStatus();
+        List<Party> ranked = new ArrayList<>();
 
-                    if(p1Major && !p2Major) return -1;
-                    if(!p1Major && p2Major) return 1;
+        for (List<Party> sameDistanceParties : distanceMap.values()) {
+            Collections.shuffle(sameDistanceParties);
+            ranked.addAll(sameDistanceParties);
+        }
 
-                    if(p1.equals(p2)) return 0;
-
-                    return Integer.compare(p1.hashCode(), p2.hashCode());
-                })
-                .toList();
+        return ranked;
     }
 }

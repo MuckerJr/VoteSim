@@ -9,7 +9,7 @@ public class Voter {
     private Party tacticalVote;
     private PoliticalSpectrum voterLeaning;
 
-    public Voter(PoliticalSpectrum voterLeaning, List<Party> preferences) {
+    public Voter(PoliticalSpectrum voterLeaning, List<Party> preferences, double baseTacticalChance) {
         this.voterLeaning = voterLeaning;
         this.preferences = SpectrumUtil.rankPartiesByDistance(voterLeaning, preferences);
     }
@@ -25,8 +25,15 @@ public class Voter {
 //     Perhaps the logic for casting a vote should belong
 //     to each voter. Then it can be called from within
 //     the election engin logic
+    public double calculateTacticalVoteChance(double baseTacticalChance) {
+        // Assumption is that base tactical is 25%
+        //
+        return baseTacticalChance;
+    }
 
     public void castVote() {
-
+        // The voter needs to assess the odds of their top candidate winning
+        // - is my candidate a major party (for now)?
+        // The voter must decide if this will make them vote tactically for the closest major party
     }
 }
