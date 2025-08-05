@@ -1,6 +1,5 @@
 package main.java.voting;
 
-import java.util.Comparator;
 import java.util.List;
 
 public class SpectrumUtil {
@@ -14,7 +13,7 @@ public class SpectrumUtil {
             case RIGHT -> 2;
             case FAR_RIGHT -> 3;
             case UNKNOWN -> 0; // For now make them a centre voter
-            default -> throw new IllegalArgumentException("Unknown spectrum: " + spectrum);
+            //default -> throw new IllegalArgumentException("Unknown spectrum: " + spectrum);
         };
     }
 
@@ -24,7 +23,24 @@ public class SpectrumUtil {
 
     public static List<Party> rankPartiesByDistance(PoliticalSpectrum voterPreference, List<Party> parties) {
         return parties.stream()
-                .sorted(Comparator.comparingInt(p -> calculateDistance(voterPreference, p.getLeaning())))
+                .sorted((p1, p2) -> {
+                    int dist1 = calculateDistance(voterPreference, p1.getLeaning());
+                    int dist2 = calculateDistance(voterPreference, p2.getLeaning());
+
+                    if(dist1 != dist2) {
+                        return Integer.compare(dist1, dist2);
+                    }
+
+                    boolean p1Major = p1.getMajorPartyStatus();
+                    boolean p2Major = p2.getMajorPartyStatus();
+
+                    if(p1Major && !p2Major) return -1;
+                    if(!p1Major && p2Major) return 1;
+
+                    if(p1.equals(p2)) return 0;
+
+                    return Integer.compare(p1.hashCode(), p2.hashCode());
+                })
                 .toList();
     }
 }
