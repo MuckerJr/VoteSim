@@ -1,4 +1,4 @@
-package voting;
+package main.java.voting;
 
 public enum PoliticalSpectrum {
     FAR_LEFT,

@@ -1,4 +1,4 @@
-package voting;
+package main.java.voting;
 
 public enum VotingSystems {
     FPTP, // First Past the Post

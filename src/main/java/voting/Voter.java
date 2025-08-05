@@ -1,4 +1,4 @@
-package voting;
+package main.java.voting;
 
 import java.util.*;
 

@@ -1,10 +1,11 @@
-package voting;
+package main.java.voting;
 
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
 
+        // Based on UK YouGov Poll
         Map<PoliticalSpectrum, Integer> spectrumDistribution = Map.of(
                 PoliticalSpectrum.FAR_LEFT, 4,
                 PoliticalSpectrum.LEFT, 11,

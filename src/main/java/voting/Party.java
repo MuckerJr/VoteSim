@@ -1,4 +1,4 @@
-package voting;
+package main.java.voting;
 
 public class Party {
     private final String name;
