@@ -19,7 +19,7 @@ public class VoterGenerator {
             }
         }
 
-        while (voters.size() > populationSize) {
+        while (voters.size() < populationSize) {
             voters.add(new Voter(PoliticalSpectrum.UNKNOWN, parties, 40.0d));
         }
 
