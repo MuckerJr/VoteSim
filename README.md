@@ -37,6 +37,6 @@ This project has rapidly grown in complexity and I’ve thoroughly enjoyed tryin
 - Java 17+
 - JUnit for testing (planned)
 
-## 💬 Contact
+## Contact
 
 If you're an employer or dev interested in simulations, political modelling, or Java code structure, feel free to reach out via GitHub.
