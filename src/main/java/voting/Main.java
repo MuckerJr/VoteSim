@@ -11,25 +11,40 @@ public class Main {
         int voterCount = ui.askForVoterCount();
 
         // Based on UK YouGov Poll
-        Map<PoliticalSpectrum, Integer> spectrumDistribution = Map.of(
-                PoliticalSpectrum.FAR_LEFT, 4,
-                PoliticalSpectrum.LEFT, 11,
-                PoliticalSpectrum.CENTRE_LEFT, 14,
-                PoliticalSpectrum.CENTRE, 22,
-                PoliticalSpectrum.CENTRE_RIGHT, 13,
-                PoliticalSpectrum.RIGHT, 10,
-                PoliticalSpectrum.FAR_RIGHT, 3,
-                PoliticalSpectrum.UNKNOWN, 22
-        );
 
         List<Party> parties = List.of(
-                new Party("Conservative Party", PoliticalSpectrum.CENTRE_RIGHT),
-                new Party("Labour Party", PoliticalSpectrum.CENTRE_LEFT),
-                new Party("Green Party", PoliticalSpectrum.LEFT),
-                new Party("Reform Party", PoliticalSpectrum.FAR_RIGHT),
-                new Party("Liberal Democrats", PoliticalSpectrum.CENTRE_LEFT),
-                new Party("Communist Party", PoliticalSpectrum.FAR_LEFT)
+                new Party("Conservative Party", 50),
+                new Party("Labour Party", -25),
+                new Party("Green Party", -100),
+                new Party("Reform Party", 180),
+                new Party("Liberal Democrats", -30),
+                new Party("Communist Party", -150)
         );
+
+        record IntRange(int min, int max) {}
+
+        Map<String, IntRange> spectrumRanges = Map.of(
+                "Far Left", new IntRange(-200, -151),
+                "Left", new IntRange(-150, -101),
+                "Centre Left", new IntRange(-100, -51),
+                "Centre", new IntRange(-50, 50),
+                "Centre Right", new IntRange(51, 100),
+                "Right", new IntRange(101, 150),
+                "Far Right", new IntRange(151, 200)
+        );
+
+        // Based on UK YouGov Poll
+        Map<String, Integer> spectrumDistribution = Map.of(
+                "Far Left", 4,
+                "Left", 11,
+                "Centre Left", 14,
+                "Centre", 22,
+                "Centre Right", 13,
+                "Right", 10,
+                "Far Right", 3
+        );
+
+
 
         List<Voter> voters = VoterGenerator.generateVoters(voterCount, parties, spectrumDistribution);
 
@@ -51,7 +66,7 @@ public class Main {
             }
         }
         System.out.printf("Total votes: %s%n", voteCount);
-        System.out.printf("The winning party is %s! with %d votes!%n", leadingParty.getName(), mostVotes);
+        System.out.printf("The winning party is %s! with %d votes!%n", leadingParty != null ? leadingParty.getName() : null, mostVotes);
 
     }
 

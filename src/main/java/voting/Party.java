@@ -3,17 +3,18 @@ package main.java.voting;
 public class Party {
     private final String name;
     private int votes = 0;
-    private final PoliticalSpectrum leaning;
+    private final int spectrumScore;
     private final boolean majorParty;
 
 
-    public Party(String name, PoliticalSpectrum leaning, boolean majorParty) {
+    public Party(String name, int spectrumScore, boolean majorParty) {
         this.name = name;
-        this.leaning = leaning;
+        this.spectrumScore = spectrumScore;
         this.majorParty = majorParty;
     }
-    public Party(String name, PoliticalSpectrum leaning) {
-        this(name, leaning, false);
+
+    public Party(String name, int spectrumScore) {
+        this(name, spectrumScore, false);
     }
 
     public void addVote() {
@@ -30,5 +31,5 @@ public class Party {
 
     public boolean getMajorPartyStatus() { return majorParty; }
 
-    public PoliticalSpectrum getLeaning() { return leaning; }
+    public int getSpectrumScore() { return spectrumScore; }
 }
